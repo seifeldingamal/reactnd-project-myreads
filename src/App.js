@@ -30,7 +30,7 @@ class BooksApp extends React.Component {
         this.setState(() => ({
           books
         }))
-      })
+      });
   }
 
   handleSelect = (bookID, shelf) => {
@@ -39,12 +39,12 @@ class BooksApp extends React.Component {
       if(book.id === bookID)
         book.shelf = shelf
       return book;
-    })
+    });
     
     this.setState({
         books
     })
-    const book = { id: bookID }
+    const book = { id: bookID };
     BooksAPI.update(book, shelf);
   }
 
@@ -63,4 +63,4 @@ class BooksApp extends React.Component {
   }
 }
 
-export default BooksApp
+export default BooksApp;

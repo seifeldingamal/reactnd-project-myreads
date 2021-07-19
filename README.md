@@ -2,6 +2,11 @@
 
 This project is done to show-off my newly acquired skilles in React.js
 
+## Starting the project
+Run the following 2 lines in terminal:
+- 'npm i'
+- 'yarn start'
+
 ## Layout
 - 2 views : 
     = List of shelves containing 3 different categories depending on the state of each book in my libirary

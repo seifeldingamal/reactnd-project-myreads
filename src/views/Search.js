@@ -12,12 +12,14 @@ class Search extends Component {
 
     updateQuery = (query) => {
 
-        const queryTrimmed = query.trim()
+
 
         this.setState(() => ({
-            query: queryTrimmed
+            query: query
         }))
 
+        const queryTrimmed = query.trim()
+        
         const { books } = this.props;
         
         if(queryTrimmed && queryTrimmed.length ) {
@@ -27,6 +29,7 @@ class Search extends Component {
                         const final = result.map(bookFound => {
                             const alreadyExists = books.find((book) => book.id === bookFound.id)
                             const shelf = alreadyExists ? bookFound.shelf = alreadyExists.shelf : bookFound.shelf = 'none'
+                            BookAPI.update(bookFound.id, shelf)
                             return {
                                 id: bookFound.id,
                                 shelf: shelf,
