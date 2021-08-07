@@ -10,7 +10,7 @@ class Search extends Component {
         foundBooks:[],
     }
 
-    updateQuery = (query) => {
+    updateQuery = async (query) => {
 
 
 
@@ -19,17 +19,17 @@ class Search extends Component {
         }))
 
         const queryTrimmed = query.trim()
-        
+
         const { books } = this.props;
         
         if(queryTrimmed && queryTrimmed.length ) {
-            BookAPI.search(queryTrimmed)
+            await BookAPI.search(queryTrimmed)
                 .then((result) => {
                     if(Array.isArray(result) && result.length > 0) {
                         const final = result.map(bookFound => {
                             const alreadyExists = books.find((book) => book.id === bookFound.id)
                             const shelf = alreadyExists ? bookFound.shelf = alreadyExists.shelf : bookFound.shelf = 'none'
-                            BookAPI.update(bookFound.id, shelf)
+                            BookAPI.update(bookFound, shelf)
                             return {
                                 id: bookFound.id,
                                 shelf: shelf,

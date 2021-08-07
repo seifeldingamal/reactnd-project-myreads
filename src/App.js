@@ -44,6 +44,7 @@ class BooksApp extends React.Component {
     this.setState({
         books
     })
+    
     const book = { id: bookID };
     BooksAPI.update(book, shelf);
   }
